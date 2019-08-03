@@ -4,12 +4,22 @@ import statsapi
 # testing some of the features of the statsapi baseball stats lib
 
 today_date = datetime.date.today()
+menu_items = [
+    '\t1: Score',
+    '\t2: Hello',
+    '\tq: Quit\n',
+    ]
 
 
 def title_bar():
     print('\t***********************')
     print('\t****Baseball Scores****')
     print('\t***********************\n')
+
+
+def menu():
+    print('Please select an option')
+    print('\n'.join(menu_items))
 
 
 # defines the og lookup, returns games for a date, or today if none given
@@ -36,9 +46,18 @@ def get_score(team):
 
 # main app #
 title_bar()
+menu()
 
-# prompts for team and returns score
-team = input('Please select a team:')
-team_score = get_score(team)
-print('\n' + team_score)
+option = ''
+option = input('Option: ')
 
+while option != 'q':
+    if option == '1':
+        # prompts for team and returns score
+        team = input('Please select a team:')
+        team_score = get_score(team)
+        print('\n' + team_score)
+        menu()
+
+    elif option == 2:
+        print('Hello')

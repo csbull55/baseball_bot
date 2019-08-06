@@ -1,5 +1,7 @@
 import datetime
-import statsapi
+import time
+import os
+import statsapi    # MLB api library
 
 # testing some of the features of the statsapi baseball stats lib
 
@@ -45,19 +47,28 @@ def get_score(team):
 
 
 # main app #
-title_bar()
-menu()
-
 option = ''
-option = input('Option: ')
 
+# quits only on q
 while option != 'q':
+
+    # persistent title/menu
+    os.system('clear')
+    title_bar()
+    menu()
+
+    # takes user input
+    option = input('Option: ')
+
     if option == '1':
         # prompts for team and returns score
         team = input('Please select a team:')
         team_score = get_score(team)
-        print('\n' + team_score)
-        menu()
+        print('\n' + team_score + '\n')
+        time.sleep(3)
+        os.system('clear')
 
-    elif option == 2:
-        print('Hello')
+    elif option == '2':
+        print('\nHello')
+        time.sleep(3)
+        os.system('clear')
